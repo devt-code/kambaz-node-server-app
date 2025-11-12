@@ -2,7 +2,7 @@ import "dotenv/config";
 import session from "express-session";
 import express from "express";
 import Hello from "./hello.js";
-import Lab5 from "../kambaz-next-js/app/Labs/Lab5/index.js";
+import Lab5 from "./Lab5/index.js";
 import CourseRoutes from "./Kambaz/Courses/routes.js";
 import ModulesRoutes from "./Kambaz/Modules/routes.js";
 import AssignmentsRoutes from "./Kambaz/Assignments/routes.js";
