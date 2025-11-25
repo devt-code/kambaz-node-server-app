@@ -21,6 +21,14 @@ export default function EnrollmentsDao(db) {
   //   return newEnrollment;
   // }
 
+  // function enrollUserInCourse(userId, courseId) {
+  //   return model.create({
+  //     user: userId,
+  //     course: courseId,
+  //     _id: `${userId}-${courseId}`,
+  //   });
+  // }
+
   function enrollUserInCourse(userId, courseId) {
     return model.create({
       user: userId,
@@ -35,6 +43,10 @@ export default function EnrollmentsDao(db) {
   //   );
   //   if (index !== -1) enrollments.splice(index, 1);
   //   return { status: "unenrolled" };
+  // }
+
+  // function unenrollUserFromCourse(user, course) {
+  //   return model.deleteOne({ user, course });
   // }
 
   function unenrollUserFromCourse(user, course) {
