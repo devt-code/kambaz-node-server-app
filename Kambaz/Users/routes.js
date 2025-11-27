@@ -38,7 +38,6 @@ export default function UserRoutes(app) {
     const { userId } = req.params;
     const userUpdates = req.body;
     await dao.updateUser(userId, userUpdates);
-    // Refetch the latest user from DB and update session
     const latestUser = await dao.findUserById(userId);
     const currentUser = req.session["currentUser"];
     if (currentUser && currentUser._id === userId) {
