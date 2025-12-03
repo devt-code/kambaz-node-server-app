@@ -9,6 +9,7 @@ import AssignmentsRoutes from "./Kambaz/Assignments/routes.js";
 import EnrollmentsRoutes from "./Kambaz/Enrollments/routes.js";
 import db from "./Kambaz/Database/index.js";
 import UserRoutes from "./Kambaz/Users/routes.js";
+import QuizRoutes from "./Kambaz/Quizzes/route.js";
 import cors from "cors";
 import Hello from "./hello.js";
 
@@ -47,6 +48,7 @@ CourseRoutes(app, db);
 ModulesRoutes(app, db);
 AssignmentsRoutes(app, db);
 EnrollmentsRoutes(app, db);
+QuizRoutes(app);
 
 Lab5(app);
 Hello(app);
