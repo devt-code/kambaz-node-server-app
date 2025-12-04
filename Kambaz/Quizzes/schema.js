@@ -7,13 +7,11 @@ const quizSchema = new mongoose.Schema(
     title: { type: String, default: "New Quiz" },
     description: { type: String, default: "" },
 
-    // publishing / availability
     published: { type: Boolean, default: false },
     due: Date,
     availableFrom: Date,
     availableUntil: Date,
 
-    // meta / settings
     quizType: {
       type: String,
       enum: [
@@ -30,10 +28,11 @@ const quizSchema = new mongoose.Schema(
       default: "Quizzes",
     },
     shuffleAnswers: { type: Boolean, default: true },
-    timeLimitMinutes: { type: Number, default: 20 },
+    setTimeLimit: { type: Boolean, default: false },
+    timeLimitMinutes: { type: Number, default: null },
     multipleAttempts: { type: Boolean, default: false },
     attemptsAllowed: { type: Number, default: 1 },
-    showCorrectAnswers: { type: String, default: "" }, // simplify
+    showCorrectAnswers: { type: String, default: "" },
     accessCode: { type: String, default: "" },
     oneQuestionAtATime: { type: Boolean, default: true },
     webcamRequired: { type: Boolean, default: false },

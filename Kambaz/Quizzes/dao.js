@@ -3,7 +3,6 @@ import QuizModel from "./model.js";
 import QuestionModel from "../QuizzQuestion/model.js";
 import AttemptModel from "../QuizzAttempts/model.js";
 
-/* ---------- Quizzes ---------- */
 export const findQuizzesForCourse = (courseId) =>
   QuizModel.find({ course: courseId });
 
@@ -19,7 +18,6 @@ export const updateQuiz = (quizId, updates) =>
 
 export const deleteQuiz = (quizId) => QuizModel.deleteOne({ _id: quizId });
 
-/* ---------- Questions ---------- */
 export const listQuestions = (quizId) =>
   QuestionModel.find({ quiz: quizId }).sort({ order: 1, createdAt: 1 });
 
@@ -38,7 +36,6 @@ export const updateQuestion = (questionId, updates) =>
 export const deleteQuestion = (questionId) =>
   QuestionModel.deleteOne({ _id: questionId });
 
-/* ---------- Attempts ---------- */
 export const countAttemptsForUserQuiz = (userId, quizId) =>
   AttemptModel.countDocuments({ user: userId, quiz: quizId });
 
@@ -48,7 +45,6 @@ export const findLastAttemptForUserQuiz = (userId, quizId) =>
     createdAt: -1,
   });
 
-/* Grade + save attempt */
 export async function submitAttempt(userId, quizId, answersPayload) {
   const quiz = await QuizModel.findById(quizId);
   if (!quiz) throw new Error("Quiz not found");
@@ -56,7 +52,6 @@ export async function submitAttempt(userId, quizId, answersPayload) {
   const questions = await QuestionModel.find({ quiz: quizId });
   const byId = new Map(questions.map((q) => [q._id, q]));
 
-  // grade
   let score = 0;
   const gradedAnswers = (answersPayload || []).map(({ questionId, value }) => {
     const q = byId.get(questionId);
@@ -79,7 +74,6 @@ export async function submitAttempt(userId, quizId, answersPayload) {
         (ans) => String(ans).trim().toLowerCase() === norm
       );
     } else {
-      // MCQ → value is index or choice text; we accept either
       let idx = -1;
       if (typeof value === "number") idx = value;
       else {

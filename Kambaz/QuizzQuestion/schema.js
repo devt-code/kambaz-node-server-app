@@ -22,13 +22,10 @@ const questionSchema = new mongoose.Schema(
     points: { type: Number, default: 1 },
     questionHtml: { type: String, default: "" },
 
-    // MCQ
-    choices: [choiceSchema], // for MCQ
+    choices: [choiceSchema],
 
-    // TRUE_FALSE
     correctBoolean: { type: Boolean, default: true },
 
-    // FILL_BLANK
     acceptableAnswers: [{ type: String }],
 
     order: { type: Number, default: 0 },

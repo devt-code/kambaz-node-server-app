@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const answerSchema = new mongoose.Schema(
   {
     question: { type: String, ref: "QuizQuestionModel", required: true },
-    value: mongoose.Schema.Types.Mixed, // string | number | boolean
+    value: mongoose.Schema.Types.Mixed,
     isCorrect: Boolean,
     pointsAwarded: { type: Number, default: 0 },
   },
